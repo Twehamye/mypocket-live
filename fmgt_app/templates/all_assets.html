@@ -1,0 +1,44 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col">
+        <h6 align="right"><a class="btn btn-success" href="#">Export Asset File</a></h6>
+        <div class="col-md">
+            <h5 align="center">ASSETS</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-sm btn-block bg-primary" style="color: white;"  href="{% url 'create_asset' %}"> Add an Asset </a>
+                <table class="table table-sm table-hover">
+                    <tr>
+                        <th>Acquisition Date </th>
+                        <th>Asset Name</th>
+                        <th>Asset Cost</th>
+                        <th>Description</th>
+                        <th>Referee1</th>
+                        <th>Referee1 Phone</th>
+                        <th>Referee2</th>
+                        <th>Referee2 phone</th>
+                        <th>More</th>
+                    </tr>
+
+                    {% for x in asset_list %}
+                    <tr>
+                        <td>{{x.date_of_acquisition}}</td>
+                        <td>{{x.asset_name}}</td>
+                        <td>{{x.asset_cost|floatformat:"-3g"}}</td>
+                        <td>{{x.description}}</td>
+                        <td>{{x.refere1}}</td>
+                        <td>{{x.refere1_phone}}</td>
+                        <td>{{x.refere2}}</td>
+                        <td>{{x.refere2_phone}}</td>
+                        <td><a class="btn btn-sm btn-primary" href="#">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

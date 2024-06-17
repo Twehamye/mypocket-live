@@ -1,0 +1,38 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col">
+        <h6 align="right"><a class="btn btn-success" href="#">Export Income File</a></h6>
+        <div class="col-md">
+            <h5 align="center">INCOME</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-sm btn-block bg-primary" style="color: white;"  href="{% url 'create_expense' %}"> Add a new Income </a>
+                <table class="table table-sm table-hover">
+                    <tr>
+                        <th>Date </th>
+                        <th>Source</th>
+                        <th>Nature</th>
+                        <th>Amount</th>
+                        <th>Referred_by</th>
+                        <th>More</th>
+                    </tr>
+
+                    {% for x in income_list %}
+                    <tr>
+                        <td>{{x.date_of_income}}</td>
+                        <td>{{x.source}}</td>
+                        <td>{{x.nature}}</td>
+                        <td>{{x.amount|floatformat:"-3g"}}</td>
+                        <td>{{x.referal}}</td>
+                        <td><a class="btn btn-sm btn-primary" href="#">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

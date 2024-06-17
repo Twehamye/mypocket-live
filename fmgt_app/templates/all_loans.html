@@ -1,0 +1,50 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col">
+        <h6 align="right"><a class="btn btn-success" href="#">Export Loans File</a></h6>
+        <div class="col-md">
+            <h5 align="center">LOANS</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-sm btn-block bg-primary" style="color: white;"  href="{% url 'create_loan' %}"> Add a Loan </a>
+                <table class="table table-sm table-hover">
+                    <tr>
+                        <th>Loan ID</th>
+                        <th>Date </th>
+                        <th>Month</th>
+                        <th>Responsible</th>
+                        <th>Amount</th>
+                        <th>Interest</th>
+                        <th>Total Amount</th>
+                        <th>No. Installments</th>
+                        <th>Status</th>
+                        <th>Payment Date</th>
+                        
+                        <th>More</th>
+                    </tr>
+
+                    {% for x in loans %}
+                    <tr>
+                        <td>{{x.loan_id}}</td>
+                        <td>{{x.date_created}}</td>
+                        <td>{{x.month}}</td>
+                        <td>{{x.responsible}}</td>
+                        <td>{{x.amount|floatformat:"-3g"}}</td>
+                        <td>{{x.interest|floatformat:"-3g"}}</td>
+                        <td>{{x.total_amount|floatformat:"-3g"}}</td>
+                        <td>{{x.no_installments}}</td>
+                        <td>{{x.status}}</td>
+                        <td>{{x.payment_date}}</td>
+                        
+                        <td><a class="btn btn-sm btn-primary" href="#">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
